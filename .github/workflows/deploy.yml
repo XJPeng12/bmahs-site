@@ -37,7 +37,7 @@ jobs:
       - name: 构建 VitePress 站点
         run: pnpm run build
 
-      - name: 配置 Pages（站点需在仓库 Settings → Pages 中选择 Source: GitHub Actions 启用一次）
+      - name: "配置 Pages（站点需在仓库 Settings → Pages 中选择 Source 为 GitHub Actions 启用一次）"
         uses: actions/configure-pages@v5
 
       - name: 上传构建产物
