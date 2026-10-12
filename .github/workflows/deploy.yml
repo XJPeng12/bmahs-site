@@ -9,7 +9,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  administration: write # configure-pages enablement 需要此权限自动开启 Pages
 
 # 同一时间只保留一次部署；进行中的构建不取消（保证顺序完整）
 concurrency:
@@ -38,10 +37,8 @@ jobs:
       - name: 构建 VitePress 站点
         run: pnpm run build
 
-      - name: 配置并启用 Pages（首次运行自动开启；域名由产物中的 CNAME 生效）
+      - name: 配置 Pages（站点需在仓库 Settings → Pages 中选择 Source: GitHub Actions 启用一次）
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: 上传构建产物
         uses: actions/upload-pages-artifact@v3
