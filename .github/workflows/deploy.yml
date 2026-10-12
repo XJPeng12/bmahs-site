@@ -37,8 +37,10 @@ jobs:
       - name: 构建 VitePress 站点
         run: pnpm run build
 
-      - name: 配置 Pages（含自定义域名 CNAME）
+      - name: 配置并启用 Pages（首次运行自动开启；域名由产物中的 CNAME 生效）
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: 上传构建产物
         uses: actions/upload-pages-artifact@v3
